@@ -1,0 +1,32 @@
+/* This targets every single element on the page */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #fcfcfc; /* A very light grey, like the inspiration site */
+    color: #333; /* Dark grey text */
+}
+
+/* Basic styling just so we can see the nav bar clearly for now */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-links {
+    list-style: none; /* Removes the bullet points */
+    display: flex;
+    gap: 20px; /* Spaces out the links */
+}
+
+.nav-links a {
+    text-decoration: none; /* Removes the underline from links */
+    color: #333;
+}
