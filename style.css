@@ -1,32 +1,224 @@
-/* This targets every single element on the page */
+/* GLOBAL RESETS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth; /* This makes the nav links slide down smoothly! */
 }
-
+/* GLOBAL STYLES & THIN WIRES BACKGROUND */
 body {
-    background-color: #fcfcfc; /* A very light grey, like the inspiration site */
-    color: #333; /* Dark grey text */
+    background-color: #fdfdfd;
+    color: #333;
+    line-height: 1.6;
+    
+    /* This creates the faint "thin wires" grid effect */
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px; /* Adjust this to make the squares larger or smaller */
+    background-attachment: fixed; /* Keeps the grid still when you scroll */
 }
 
-/* Basic styling just so we can see the nav bar clearly for now */
+/* THE CONTAINER FOR THE RANDOM BOTS */
+#animated-bg {
+    position: fixed;
+    top: 0; left: 0; 
+    width: 100vw; height: 100vh;
+    z-index: -1; 
+    pointer-events: none; 
+    overflow: hidden;
+}
+
+/* STYLING FOR THE SPAWNED ICONS */
+.floating-icon {
+    position: absolute;
+    /* Opacity starts at 0 (invisible) and gets handled by the keyframes */
+    opacity: 0; 
+    /* The animation lasts 10 seconds, moves at a steady pace (linear), and stops at the end (forwards) */
+    animation: floatAndFade 10s linear forwards;
+}
+
+/* THE LIFECYCLE OF EACH ROBOT ICON */
+@keyframes floatAndFade {
+    0%   { opacity: 0; transform: translateY(20px) scale(0.8); }
+    20%  { opacity: 0.15; transform: translateY(0px) scale(1); } /* Fades in to 15% visibility */
+    80%  { opacity: 0.15; transform: translateY(-40px) scale(1); } /* Floats upwards slowly */
+    100% { opacity: 0; transform: translateY(-60px) scale(0.8); } /* Fades out and disappears */
+}
+
+/* NAVIGATION */
 nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 20px 50px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed; /* Keeps nav at the top while scrolling */
+    width: 100%;
+    z-index: 1000;
 }
 
 .nav-links {
-    list-style: none; /* Removes the bullet points */
+    list-style: none;
     display: flex;
-    gap: 20px; /* Spaces out the links */
+    gap: 30px;
 }
 
 .nav-links a {
-    text-decoration: none; /* Removes the underline from links */
-    color: #333;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #007bff; /* Turns blue on hover */
+}
+
+/* HERO SECTION */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    /* Add an image URL below once you have a background picture */
+    background: url('your-background-robot-image.jpg') center/cover; 
+    background-color: #f4f4f4; /* Fallback color */
+}
+
+.hero-bg-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.7); /* Light overlay so text is readable */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-content h1 { font-size: 3rem; margin-bottom: 10px; }
+.hero-content h2 { font-size: 1.5rem; margin-bottom: 20px; color: #555; }
+.typing-text { color: #d93025; font-weight: bold; }
+
+/* REUSABLE SECTION LAYOUTS */
+.section-container {
+    padding: 100px 10%;
+}
+
+.bg-light {
+    background-color: #f9f9f9;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #222;
+}
+
+/* ABOUT GRID */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* SKILLS & PROJECTS GRIDS */
+.skills-grid, .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.skill-card, .project-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.skill-card:hover, .project-card:hover {
+    transform: translateY(-5px); /* Makes cards float up when hovered */
+}
+
+.project-card { padding: 0; overflow: hidden; }
+.project-img-placeholder { height: 200px; background: #ddd; display: grid; place-items: center; }
+.project-info { padding: 20px; }
+
+/* BUTTON */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+/* LOGO STYLING */
+.logo img {
+    height: 40px; /* Change this number to make the logo bigger or smaller */
+    width: auto;  /* This keeps the image from stretching weirdly */
+    display: block; /* Removes a tiny invisible space that browsers put under images */
+}
+
+/* HERO SECTION */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    /* REMOVED the background image and solid color so the wires show through */
+    background: transparent; 
+}
+
+/* We don't need the overlay anymore if there's no background picture to darken */
+.hero-bg-overlay {
+    display: none; 
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-content h1 { font-size: 3rem; margin-bottom: 10px; }
+.hero-content h2 { font-size: 1.5rem; margin-bottom: 20px; color: #555; }
+.typing-text { color: #d93025; font-weight: bold; }
+
+
+/* REUSABLE SECTION LAYOUTS */
+.section-container {
+    padding: 100px 10%;
+    /* Ensures normal sections let the background show through */
+    background: transparent; 
+}
+
+/* For sections where you want a slight visual break (like Skills and Contact) */
+.bg-light {
+    /* Instead of a solid color, we use a semi-transparent white (rgba) */
+    background-color: rgba(249, 249, 249, 0.7); 
+    
+    /* PRO-TIP: This adds a modern "frosted glass" blur to the robots as they float behind the text! */
+    backdrop-filter: blur(4px); 
 }

@@ -3,30 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sushant-Robotics</title>
-
+    <title>Sushant Niraula | Robotics Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="animated-bg"></div>
     <nav>
-        <div class="logo">Sushant-Robotics</div>
+        <div class="logo">
+            <a href="#home">
+                <img src="assets/sushant_logo_final.png" alt="Sushant Logo">
+            </a>
+        </div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <header id="home">
-        <div class="hero-content">
+    <header id="home" class="hero-section">
+        <div class="hero-bg-overlay"></div> <div class="hero-content">
             <h1>Hi, I am <span class="name">Sushant Niraula</span></h1>
-            <h2>I am a <span classs="typing-text">Electronics Communication and Information Engineering & Robotics Inthuiast</span></h2>
-            <p>Passionate about bringing Autonomous Mobile Robots to life and for Helping the people.</p>
+            <h2>I am an <span class="typing-text"></span></h2>
+            <p>Passionate about bringing Autonomous Mobile Robots to life and helping people.</p>
         </div>
     </header>
-    
+
+    <section id="about" class="section-container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>I am an Electronics Communication and Information Engineering student with a deep passion for robotics. I specialize in building high-fidelity simulations and autonomous systems.</p>
+                <br>
+                <p>When I'm not building robots, you can find me exploring new technologies and working on projects that bridge the gap between hardware and software.</p>
+            </div>
+            <div class="about-image">
+                <img src="assets/sushant.jpg" alt="Sushant Niraula">
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section-container bg-light">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Programming</h3>
+                <p>C, C++, Python, OpenCV</p>
+            </div>
+            <div class="skill-card">
+                <h3>Robotics</h3>
+                <p>ROS2, Gazebo, MicroRos</p>
+            </div>
+            <div class="skill-card">
+                <h3>Hardware</h3>
+                <p>Arduino, Raspberry Pi, Pi Pico, ESP32</p>
+            </div>
+            <div class="skill-card">
+                <h3>Design</h3>
+                <p>Fusion360</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section-container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-img-placeholder">Project Image</div>
+                <div class="project-info">
+                    <h3>Autonomous Line Follower</h3>
+                    <p>Designed the mechanical and software stack for a precision line-following robot.</p>
+                </div>
+            </div>
+            </div>
+    </section>
+
+    <section id="contact" class="section-container bg-light">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+            <p>Interested in working together or have a question about my robotics projects?</p>
+            <a href="mailto:your-email@example.com" class="btn">Email Me</a>
+        </div>
+    </section>
+
     <script src="script.js"></script>
 </body>
 </html>
